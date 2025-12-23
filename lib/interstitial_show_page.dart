@@ -1,6 +1,5 @@
 import 'package:adscope_sdk/amps_sdk_export.dart';
 import 'package:adscope_sdk_demo/data/common.dart';
-import 'package:adscope_sdk_demo/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 class InterstitialShowPage extends StatefulWidget {
   const InterstitialShowPage({super.key, required this.title});
@@ -33,41 +32,17 @@ class _InterstitialShowPageState extends State<InterstitialShowPage> {
           });
           debugPrint("ad load onAdClicked");
         },
-        onAdExposure: () {
-          debugPrint("ad load onAdExposure");
-        },
         onAdClosed: () {
           setState(() {
             couldBack = true;
           });
           debugPrint("ad load onAdClosed");
         },
-        onAdReward: () {
-          debugPrint("ad load onAdReward");
-        },
         onAdShow: () {
           setState(() {
             couldBack = false;
           });
           debugPrint("ad load onAdShow");
-        },
-        onAdShowError: (code, msg) {
-          debugPrint("ad load onAdShowError");
-        },
-        onRenderFailure: () {
-          debugPrint("ad load onRenderFailure");
-        },
-        onVideoPlayStart: () {
-          debugPrint("ad load onVideoPlayStart");
-        },
-        onVideoPlayError: (code,msg) {
-          debugPrint("ad load onVideoPlayError");
-        },
-        onVideoPlayEnd: () {
-          debugPrint("ad load onVideoPlayEnd");
-        },
-        onVideoSkipToEnd: (duration) {
-          debugPrint("ad load onVideoSkipToEnd=$duration");
         });
 
     AdOptions options = AdOptions(spaceId: interstitialSpaceId);
@@ -96,20 +71,7 @@ class _InterstitialShowPageState extends State<InterstitialShowPage> {
               _interAd = AMPSInterstitialAd(config: options, mCallBack: _adCallBack);
               _interAd?.load();
             },
-          ),
-            ButtonWidget(
-                buttonText: '获取竞价=$eCpm',
-                callBack: () async {
-                  bool? isReadyAd = await _interAd?.isReadyAd();
-                  debugPrint("isReadyAd=$isReadyAd");
-                  if(_interAd != null){
-                    num ecPmResult =  await _interAd!.getECPM();
-                    setState(() {
-                      eCpm = ecPmResult;
-                      debugPrint("ecPm请求结果=$eCpm");
-                    });
-                  }
-                })
+          )
           ]
         ),
       ],)

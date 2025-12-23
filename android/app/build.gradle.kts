@@ -6,6 +6,19 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        // 创建 release 签名配置
+        create("release") {
+            storeFile = file("C:\\Users\\12769\\Desktop\\key") // 注意：这里要确保是完整的密钥文件路径（如 key.jks）
+            storePassword = "123456"
+            keyAlias = "key"
+            keyPassword = "123456"
+            // 可选：开启V1/V2签名（兼容不同Android版本）
+            enableV1Signing = true
+            enableV2Signing = true
+        }
+        // 创建 debug 签名配置（可选，若不需要可删除）
+    }
     namespace = "com.example.adscope_sdk_demo"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
@@ -31,10 +44,26 @@ android {
     }
 
     buildTypes {
+        // Release 构建类型配置
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = false // 对应 debuggable false
+            isMinifyEnabled = true // 对应 minifyEnabled true
+            isZipAlignEnabled = true // 对应 zipAlignEnabled true
+            isShrinkResources = true // 对应 shrinkResources true
+
+            // 混淆规则文件配置（等效 proguardFiles）
+            proguardFiles(
+                getDefaultProguardFile("proguard-android.txt"),
+                file("proguard-rules.pro")
+            )
+
+            // 关联release签名配置（需先定义signingConfigs）
+            signingConfig = signingConfigs.getByName("release")
+        }
+
+        // Debug 构建类型配置
+        debug {
+            isMinifyEnabled = false // 对应 minifyEnabled false
         }
     }
 }
