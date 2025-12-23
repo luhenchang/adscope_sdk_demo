@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:adscope_sdk/amps_sdk_export.dart';
 import 'package:adscope_sdk_demo/reward_video_page.dart';
 import 'package:adscope_sdk_demo/splash_widget_page.dart';
@@ -69,7 +70,6 @@ class _SplashPageState extends State<SplashPage> {
     {'text': '开屏show案例页面', 'route': 'SplashShowPage'},
     {'text': '开屏组件案例页面', 'route': 'SplashWidgetPage'},
     {'text': '插屏show案例页面', 'route': 'InterstitialShowPage'},
-    {'text': '插屏组件案例页面', 'route': 'InterstitialPage'},
     {'text': '点击跳转原生页面', 'route': 'NativePage'},
     {'text': '点击跳转自渲染页面', 'route': 'NativeUnifiedPage'},
     {'text': '点击跳转激励视频页面', 'route': 'RewardVideoPage'},
@@ -80,6 +80,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    if (Platform.isIOS){
+      _menuConfig.removeAt(1);
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) _initSDK();
     });
