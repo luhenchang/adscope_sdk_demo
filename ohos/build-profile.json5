@@ -1,13 +1,31 @@
-
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/dzq_bookpro/.ohos/config/default_ohos_K1y7XBDayvM2OHJH0s7VJaCk5G8Vc7E2CZ8Up5nU_iU=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001A5EEE4344306EFB87E6CC7F80CD232F81A50FB878995B55F84E0F691429C744AD8015FDAE50AA",
+          "profile": "/Users/dzq_bookpro/.ohos/config/default_ohos_K1y7XBDayvM2OHJH0s7VJaCk5G8Vc7E2CZ8Up5nU_iU=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/dzq_bookpro/.ohos/config/default_ohos_K1y7XBDayvM2OHJH0s7VJaCk5G8Vc7E2CZ8Up5nU_iU=.p12",
+          "storePassword": "0000001A035207403928BE76A827C69E416008303361CF0B054C0ADF502919B952B48C084A9E5CFF1A04"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
         "signingConfig": "default",
-        "compatibleSdkVersion": "5.0.0(12)",
+        "compatibleSdkVersion": "5.0.1(13)",
         "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "useNormalizedOHMUrl": true
+          }
+        }
       }
     ],
     "buildModeSet": [

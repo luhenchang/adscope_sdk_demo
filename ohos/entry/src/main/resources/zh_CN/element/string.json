@@ -11,6 +11,10 @@
     {
       "name": "EntryAbility_label",
       "value": "adscope_sdk_demo"
+    },
+    {
+      "name": "OAID_reason",
+      "value": "获取OAID用于个性化广告"
     }
   ]
 }
