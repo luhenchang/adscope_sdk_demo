@@ -40,10 +40,10 @@ target 'Runner' do
     pod 'AMPSGMAdapter', '~> 5.1.7200.2' #gromore
     pod 'AMPSBDAdapter', '~> 5.1.10020.1'  #百度
     pod 'AMPSSGAdapter', '~> 5.1.4203.0'  #sigmob
-  #  pod 'AMPSJDAdapter', '~> 5.1.268.0'   #京东
-  #  pod 'AMPSQMAdapter', '~> 5.1.137.0'   #趣盟
-  #  pod 'AMPSOCTAdapter', '~> 5.1.2510.0'  #章鱼
-  #  pod 'AMPSMSAdapter', '~> 5.1.2772.0'   #美数
+    pod 'AMPSJDAdapter', '~> 5.1.268.0'   #京东
+    pod 'AMPSQMAdapter', '~> 5.1.137.0'   #趣盟
+    pod 'AMPSOCTAdapter', '~> 5.1.2510.0'  #章鱼
+    pod 'AMPSMSAdapter', '~> 5.1.2772.0'   #美数
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   target 'RunnerTests' do

@@ -105,19 +105,6 @@ class _SplashShowPageState extends State<SplashShowPage> {
                           _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
                           _splashAd?.load();
                         }),
-                    ButtonWidget(
-                        buttonText: '获取竞价=$eCpm',
-                        callBack: () async {
-                          bool? isReadyAd = await _splashAd?.isReadyAd();
-                          debugPrint("isReadyAd=$isReadyAd");
-                          if(_splashAd != null){
-                            num ecPmResult =  await _splashAd!.getECPM();
-                            debugPrint("ecPm请求结果=$eCpm");
-                            setState(() {
-                              eCpm = ecPmResult;
-                            });
-                          }
-                        })
                   ],
                 )
               ],
