@@ -5,10 +5,10 @@ packages:
     dependency: "direct main"
     description:
       name: adscope_sdk
-      sha256: "59735a10a197b098986293d0fa3dd35914ba47f8642bfc280f8b9d9ace67d65c"
+      sha256: a2834c292e949b7fd2c8939110d85aacb75cc8413a92ecb7c3907cac43b8939d
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.3"
   async:
     dependency: transitive
     description:
