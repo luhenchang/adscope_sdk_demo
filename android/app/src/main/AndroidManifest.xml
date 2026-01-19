@@ -169,6 +169,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name="biz.beizi.adn.ad.widget.activity.ASNPAdActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|screenLayout"
+            android:screenOrientation="portrait" />
         <!--BeiZiSDK start-->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -196,12 +200,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/pangle_file_paths" />
         </provider>
-
-        <provider
-            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
-            android:authorities="${applicationId}.TTMultiProvider"
-            android:exported="false" />
-        <!-- 穿山甲-GroMore融合版本SDK end-->
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

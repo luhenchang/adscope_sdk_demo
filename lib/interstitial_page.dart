@@ -51,9 +51,7 @@ class _InterstitialPageState extends State<InterstitialPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-        canPop: true,
-        child: Scaffold(
+    return Scaffold(
             appBar: AppBar(
               title: Text(widget.title),
             ),
@@ -72,6 +70,6 @@ class _InterstitialPageState extends State<InterstitialPage> {
                 ]),
                 if (visibleAd) const InterstitialWidget()
               ],
-            )));
+            ));
   }
 }
