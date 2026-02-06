@@ -3,7 +3,11 @@ import 'package:adscope_sdk_demo/widgets/blurred_background.dart';
 import 'package:adscope_sdk/amps_sdk_export.dart';
 import 'package:adscope_sdk_demo/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
-
+enum SplashAdStatus {
+  idle,       // 初始化/默认状态
+  renderOk,    // 刷新显示（竞价成功并渲染）
+  closed      // 关闭（点击跳过或倒计时结束）
+}
 class SplashWidgetPage extends StatefulWidget {
   const SplashWidgetPage({super.key, required this.title});
 
@@ -16,7 +20,7 @@ class SplashWidgetPage extends StatefulWidget {
 class _SplashWidgetPageState extends State<SplashWidgetPage> {
   AMPSSplashAd? _splashAd;
   late AdCallBack _adCallBack;
-  bool splashVisible = false;
+  SplashAdStatus adWidgetStatus = SplashAdStatus.idle;
   bool couldBack = true;
   bool isLoading = false;
   num eCpm = -1;
@@ -27,8 +31,9 @@ class _SplashWidgetPageState extends State<SplashWidgetPage> {
     super.initState();
     _adCallBack = AdCallBack(onRenderOk: () {
       setState(() {
+        adWidgetStatus = SplashAdStatus.renderOk;
+        debugPrint("ad load onRenderOk=$adWidgetStatus");
         couldBack = false;
-        splashVisible = true;
       });
       debugPrint("ad load onRenderOk");
     },onAdShow: () {
@@ -42,14 +47,14 @@ class _SplashWidgetPageState extends State<SplashWidgetPage> {
       isLoading = false;
       setState(() {
         couldBack = true;
-        splashVisible = false;
+        adWidgetStatus = SplashAdStatus.closed;
       });
       debugPrint("ad load onAdClicked");
     }, onAdClosed: () {
       isLoading = false;
       setState(() {
         couldBack = true;
-        splashVisible = false;
+        adWidgetStatus = SplashAdStatus.closed;
       });
       debugPrint("ad load onAdClosed");
     });
@@ -110,7 +115,7 @@ class _SplashWidgetPageState extends State<SplashWidgetPage> {
                     }),
               ],
             ),
-            if (splashVisible) _buildSplashWidget()
+            if (adWidgetStatus != SplashAdStatus.closed) Container(child: _buildSplashWidget())
           ],
         )));
   }
