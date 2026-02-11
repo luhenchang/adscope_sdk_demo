@@ -28,34 +28,87 @@ class _RewardVideoPageState extends State<RewardVideoPage> {
       setState(() {
         couldBack = false;
       });
-    }, onLoadFailure: (code, msg) {
-      debugPrint("ad load failure=$code;$msg");
-    }, onAdClicked: () {
-      setState(() {
-        couldBack = true;
-      });
-      debugPrint("ad load onAdClicked");
-    }, onAdClosed: () {
-      setState(() {
-        couldBack = true;
-      });
-      debugPrint("ad load onAdClosed");
-    }, onAdReward: () {
-      debugPrint("ad load onAdReward");
-    }, onAdShow: () {
-      debugPrint("ad load onAdShow");
-    }, onVideoPlayStart: () {
-      debugPrint("ad load onVideoPlayStart");
-    }, onVideoPlayEnd: () {
-      debugPrint("ad load onVideoPlayEnd");
-    }, onVideoSkipToEnd: (duration) {
-      debugPrint("ad load onVideoSkipToEnd=$duration");
-    });
-    AdOptions options = AdOptions(spaceId: rewardVideoSpaceId);
-    _rewardVideoAd =
-        AMPSRewardVideoAd(config: options, adCallBack: _adCallBack);
-  }
+    },
+        onLoadFailure: (code, msg) {
+          debugPrint("ad load failure=$code;$msg");
+        },
+        onAdClicked: () {
+          setState(() {
+            couldBack = true;
+          });
+          debugPrint("ad load onAdClicked");
+        },
+        onAdClosed: () {
+          setState(() {
+            couldBack = true;
+          });
+          debugPrint("ad load onAdClosed");
+        },
+        onAdReward: () {
+          debugPrint("ad load onAdReward");
+        },
+        onAdShow: () {
+          debugPrint("ad load onAdShow");
+        },
+        onVideoPlayStart: () {
+          debugPrint("ad load onVideoPlayStart");
+        },
+        onVideoPlayEnd: () {
+          debugPrint("ad load onVideoPlayEnd");
+        },
+        onVideoSkipToEnd: (duration) {
+          debugPrint("ad load onVideoSkipToEnd=$duration");
+        });
 
+    // 2. 需要给渠道氮素设置时候再选择渠道设置。
+    /****
+        String? useId = "xxxxx";//UserInfoManager.instance.getUserId().tostring()
+        Map<String, dynamic>? extraDataMap;
+        if (Platform.isAndroid) {
+        const data = 'xxxxxxx';
+        extraDataMap = <String, String>{
+        AmpsAndroidConstants.ampsAdnCsj: data,
+        AmpsAndroidConstants.ampsAdnGm: data,
+        AmpsAndroidConstants.ampsAdnKs: data,
+        AmpsAndroidConstants.ampsAdnBd: data,
+        AmpsAndroidConstants.ampsAdnGdt: data,
+        };
+        } else if (Platform.isIOS) {
+        const data = 'xxxxxx';
+        //TODO IOS端KEY必须和下面一致:userID,extra
+        extraDataMap = {
+        AmpsIosConstants.ampsAdnGdt: {
+        "userID": useId,
+        "extra": data,
+        },
+        AmpsIosConstants.ampsAdnKs: {
+        "userID": useId,
+        "extra": data,
+        },
+        AmpsIosConstants.ampsAdnCsj: {
+        "userID": useId,
+        "extra": data,
+        },
+        AmpsIosConstants.ampsAdnGm: {
+        "userID": useId,
+        "extra": data,
+        },
+        AmpsIosConstants.ampsAdnBd: {
+        "userID": useId,
+        "extra": data,
+        },
+        };
+        }
+        AdOptions options = AdOptions(
+        spaceId: rewardVideoSpaceId,
+        //userId: useId, //根据需要传入
+        //extraDataMap: extraDataMap //根据需要传入
+        );
+        _rewardVideoAd =
+        AMPSRewardVideoAd(config: options, adCallBack: _adCallBack);
+        }
+     ***/
+  }
   @override
   Widget build(BuildContext context) {
     return PopScope(
