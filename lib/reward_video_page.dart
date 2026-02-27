@@ -108,6 +108,9 @@ class _RewardVideoPageState extends State<RewardVideoPage> {
         AMPSRewardVideoAd(config: options, adCallBack: _adCallBack);
         }
      ***/
+    AdOptions options = AdOptions(spaceId: rewardVideoSpaceId);
+    _rewardVideoAd = AMPSRewardVideoAd(config: options, adCallBack: _adCallBack);
+
   }
   @override
   Widget build(BuildContext context) {

@@ -58,8 +58,7 @@ class _SplashPageState extends State<NativePage> {
 
     AdOptions options = AdOptions(
         spaceId: nativeSpaceId,
-        adCount: 2,
-        expressSize: [expressWidth, expressHeight]
+        adCount: 2
     );
     _nativeAd = AMPSNativeAd(
         config: options,

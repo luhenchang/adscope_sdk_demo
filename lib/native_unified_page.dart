@@ -92,7 +92,7 @@ class _SplashPageState extends State<NativeUnifiedPage> {
           itemBuilder: (BuildContext context, int index) {
             int adIndex = index ~/ 5;
             int feedIndex = index - adIndex;
-            if (index % 5 == 4 && adIndex < feedAdList.length) {
+            if (index % 5 == 2 && adIndex < feedAdList.length) {
               String adId = feedAdList[adIndex];
               debugPrint(adId);
               return SizedBox.fromSize(

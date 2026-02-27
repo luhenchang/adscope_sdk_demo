@@ -11,7 +11,7 @@
           "amps_hw_adapter",
           "amps_sigmob_adapter",
           "amps_gdt_adapter",
-          "amps_jad_adapter"
+//          "amps_jad_adapter"
         ]
       },
     }
