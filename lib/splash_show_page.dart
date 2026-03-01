@@ -24,27 +24,34 @@ class _SplashShowPageState extends State<SplashShowPage> {
     super.initState();
     _adCallBack = AdCallBack(
         onRenderOk: () {
-      _splashAd?.showAd();
-          //TODO 如果添加了底部自定义，那么开屏的高度 = size.height - 100（这里的100是底部自定义部分的高度）
-          // splashBottomWidget: SplashBottomWidget(
-          //     height: 100,
-          //     backgroundColor: "#FFFFFFFF",
-          //     children: [
-          //   ImageComponent(
-          //     width: 25,
-          //     height: 25,
-          //     x: 170,
-          //     y: 10,
-          //     imagePath: 'assets/images/img.png',
-          //   ),
-          //   TextComponent(
-          //     fontSize: 24,
-          //     color: "#00ff00",
-          //     x: 140,
-          //     y: 50,
-          //     text: 'Hello Android!',
-          //   ),
-          // ]));
+          _splashAd?.showAd(
+            //TODO 如果添加了底部自定义，那么开屏的高度 = size.height - 100（这里的100是底部自定义部分的高度）
+              splashBottomWidget: SplashBottomWidget(
+                  height: 100,
+                  backgroundColor: "#FFE0E0E0",
+                  children: [
+                    ImageComponent(
+                      width: 25,
+                      height: 25,
+                      x: 120,
+                      y: 50,
+                      imagePath: 'assets/images/img.png',
+                    ),
+                    TextComponent(
+                      fontSize: 24,
+                      color: "#00ff00",
+                      x: 150,
+                      y: 48,
+                      text: 'Hello Android!',
+                    ),
+                    TextComponent(
+                      fontSize: 24,
+                      color: "#00ff00",
+                      x: 150,
+                      y: 62,
+                      text: 'Hello Android is Harmony IOS!',
+                    ),
+                  ]));
       debugPrint("ad load onRenderOk");
     }, onLoadFailure: (code, msg) {
       debugPrint("ad load failure=$code;$msg");
@@ -74,7 +81,8 @@ class _SplashShowPageState extends State<SplashShowPage> {
       if (mounted) {
         var size = MediaQuery.of(context).size;
         AdOptions options = AdOptions(
-            spaceId: splashSpaceId,expressSize: [size.width,size.height]);
+            spaceId: splashSpaceId,
+            splashAdBottomBuilderHeight: 100);
         _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
         _splashAd?.load();
       }
@@ -101,7 +109,8 @@ class _SplashShowPageState extends State<SplashShowPage> {
                         callBack: () {
                           var size = MediaQuery.of(context).size;
                           AdOptions options = AdOptions(
-                              spaceId: splashSpaceId,expressSize: [size.width,size.height]);
+                              spaceId: splashSpaceId,
+                              splashAdBottomBuilderHeight: 100);
                           _splashAd = AMPSSplashAd(config: options, mCallBack: _adCallBack);
                           _splashAd?.load();
                         }),

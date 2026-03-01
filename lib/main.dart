@@ -120,7 +120,7 @@ class _SplashPageState extends State<SplashPage> {
 
   void _prepareSplashAd() {
     var size = MediaQuery.of(context).size;
-    final adOptions = AdOptions(spaceId: splashSpaceId, splashAdBottomBuilderHeight: 100,expressSize: [size.width,size.height]);
+    final adOptions = AdOptions(spaceId: splashSpaceId);
     _splashAd = AMPSSplashAd(
       config: adOptions,
       mCallBack: AdCallBack(
