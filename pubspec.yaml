@@ -34,6 +34,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  #adscope_sdk: ^0.1.6 # 如果是ios和android使用官方库这个依赖
   adscope_sdk:
     git:
       url: https://github.com/luhenchang/adscope_sdk.git
